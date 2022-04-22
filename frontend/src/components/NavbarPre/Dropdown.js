@@ -21,6 +21,8 @@ function Dropdown() {
         },
         { headers: { "Content-Type": "application/json" } }
       );
+      const dataGraph = res.data;
+      console.log("++++", dataGraph);
       console.log(res.data);
       setData(res.data);
       setStock(name);
@@ -29,6 +31,8 @@ function Dropdown() {
     }
     // console.log(name);
   };
+
+  // const [chartData, setChartData] = useState({})
 
   return (
     <>
