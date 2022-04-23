@@ -18,12 +18,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import ChartContextProvider from "./context/chartContext";
 import StockContextProvider from "./context/stockContext";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <StockContextProvider>
-    <App />
+    <ChartContextProvider>
+      <App />
+    </ChartContextProvider>
   </StockContextProvider>,
   document.getElementById("root")
 );
