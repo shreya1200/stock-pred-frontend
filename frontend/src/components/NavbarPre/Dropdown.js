@@ -29,10 +29,14 @@ function Dropdown() {
 
       const pred = res.data.pred;
       const actual = res.data.actual;
+      const news = res.data.news;
+      const tweets = res.data.tweets;
       // const pred = res.data.pred.map((name) => res.pred[name]);
-      // console.log("pred:", pred);
+      console.log("pred:", pred);
       // const actual = res.data.actual.map((name) => res.actual[name]);
-      // console.log("actual:", actual);
+      console.log("actual:", actual);
+      console.log("news:", news);
+      console.log("tweets:", tweets);
       const labels = [...Array(pred.length).keys()];
       setChartData({
         labels: labels,
