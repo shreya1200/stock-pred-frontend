@@ -19,13 +19,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import ChartContextProvider from "./context/chartContext";
+import NewsContextProvider from "./context/newsContext";
 import StockContextProvider from "./context/stockContext";
+import TechnicalContextProvider from "./context/technicalContext";
+import TweetsContextProvider from "./context/tweetsContext";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <StockContextProvider>
     <ChartContextProvider>
-      <App />
+      <NewsContextProvider>
+        <TweetsContextProvider>
+          <TechnicalContextProvider>
+            <App />
+          </TechnicalContextProvider>
+        </TweetsContextProvider>
+      </NewsContextProvider>
     </ChartContextProvider>
   </StockContextProvider>,
   document.getElementById("root")

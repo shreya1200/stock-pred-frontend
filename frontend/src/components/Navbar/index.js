@@ -1,6 +1,6 @@
 //use rafce to import the below code
-import React from 'react'
-import { FaBars } from 'react-icons/fa'
+import React from "react";
+import { FaBars } from "react-icons/fa";
 import {
   Nav,
   NavbarContainer,
@@ -11,38 +11,38 @@ import {
   NavLinks,
   NavBtn,
   NavBtnLink,
-} from './NavbarElements'
+} from "./NavbarElements";
 
 const Navbar = ({ toggle }) => {
   return (
     <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to='/'>Investtech</NavLogo>
+          <NavLogo to="/">StockEra</NavLogo>
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
           <NavMenu>
             <NavItem>
-              <NavLinks to='discover'>About</NavLinks>
+              <NavLinks to="discover">About</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to='about'>Discover</NavLinks>
+              <NavLinks to="about">Discover</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to='services'>Services</NavLinks>
+              <NavLinks to="services">Services</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to='signup'>Sign up</NavLinks>
+              <NavLinks to="signup">Sign up</NavLinks>
             </NavItem>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to='/signin'>Predictions</NavBtnLink>
+            <NavBtnLink to="/signin">Predictions</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

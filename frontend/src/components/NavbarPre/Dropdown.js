@@ -6,6 +6,9 @@ import "./Dropdown.css";
 import axios from "axios";
 import { stockContext } from "../../context/stockContext";
 import { chartContext } from "../../context/chartContext";
+import { newsContext } from "../../context/newsContext";
+import { tweetsContext } from "../../context/tweetsContext";
+import { technicalContext } from "../../context/technicalContext";
 
 function Dropdown() {
   const [click, setClick] = useState(false);
@@ -13,6 +16,10 @@ function Dropdown() {
 
   const { stock, setStock } = useContext(stockContext);
   const { chartData, setChartData } = useContext(chartContext);
+  const { newsData, setNewsData } = useContext(newsContext);
+  const { tweetsData, setTweetsData } = useContext(tweetsContext);
+  const { technicalData, setTechnicalData } = useContext(technicalContext);
+
   // const [chartData, setChartData] = useState({});
 
   const handleClick = async (keyword, name) => {
@@ -24,19 +31,23 @@ function Dropdown() {
         },
         { headers: { "Content-Type": "application/json" } }
       );
-      console.log(res.data);
+      // console.log(res.data);
       setData(res.data);
 
       const pred = res.data.pred;
       const actual = res.data.actual;
       const news = res.data.news;
       const tweets = res.data.tweets;
-      // const pred = res.data.pred.map((name) => res.pred[name]);
-      console.log("pred:", pred);
-      // const actual = res.data.actual.map((name) => res.actual[name]);
-      console.log("actual:", actual);
-      console.log("news:", news);
-      console.log("tweets:", tweets);
+      const technicals = res.data.technicals;
+      console.log(":::", technicals);
+
+      // // const pred = res.data.pred.map((name) => res.pred[name]);
+      // console.log("pred:", pred);
+      // // const actual = res.data.actual.map((name) => res.actual[name]);
+      // console.log("actual:", actual);
+      // console.log("news:", news);
+      // // console.log("tweets:", tweets);
+      // console.log({ tweets });
       const labels = [...Array(pred.length).keys()];
       setChartData({
         labels: labels,
@@ -58,6 +69,19 @@ function Dropdown() {
       });
 
       setStock(name);
+      setNewsData({
+        items: news,
+      });
+      setTweetsData({ items: tweets });
+      setTechnicalData({
+        open: technicals.open,
+        low: technicals.low,
+        high: technicals.high,
+        close: technicals.close,
+        adjClose: technicals.adjClose,
+        vol: technicals.vol,
+        tomorrowsPred: technicals.tomorrowsPred,
+      });
     } catch (err) {
       console.log(err);
     }
